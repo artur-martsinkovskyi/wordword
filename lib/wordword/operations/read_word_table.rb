@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
-require 'dry/monads'
+require 'dry/monads/all'
 
 class ReadWordTable
   include Dry::Monads[:result]
+  include Dry::Monads::Do.for(:call)
 
   def call(filename:)
-    read_file(filename).bind do |lines|
-      parse_lines(lines).fmap(&:itself)
-    end
+    lines = yield read_file(filename)
+    words = yield parse_lines(lines)
+
+    Success(words)
   end
 
   private

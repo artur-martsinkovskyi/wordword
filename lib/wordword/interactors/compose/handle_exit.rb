@@ -32,7 +32,7 @@ module Compose
           write_words(filename, merged_words)
         end
       else
-        write_words(filename, merged_words)
+        write_words(filename, words)
       end
     end
 
