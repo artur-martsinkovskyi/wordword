@@ -18,6 +18,18 @@ module Wordword
     end
     map %w[--version -v] => :version
 
+    desc 'compose', 'Command description...'
+    method_option :help, aliases: '-h', type: :boolean,
+                         desc: 'Display usage information'
+    def compose(*)
+      if options[:help]
+        invoke :help, ['compose']
+      else
+        require_relative 'commands/compose'
+        Wordword::Commands::Compose.new(options).execute
+      end
+    end
+
     desc 'train FILE', 'Command description...'
     method_option :help, aliases: '-h', type: :boolean,
                          desc: 'Display usage information'
