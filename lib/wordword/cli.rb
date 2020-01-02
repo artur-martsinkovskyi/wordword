@@ -18,7 +18,7 @@ module Wordword
     end
     map %w[--version -v] => :version
 
-    desc 'compose', 'Command description...'
+    desc 'compose', 'Launches a repl loop to create file with words/phrases and translations that can be fed to train'
     method_option :help, aliases: '-h', type: :boolean,
                          desc: 'Display usage information'
     def compose(*)
@@ -30,12 +30,12 @@ module Wordword
       end
     end
 
-    desc 'train FILE', 'Command description...'
+    desc 'train [FILE]', 'Command description...'
     method_option :help, aliases: '-h', type: :boolean,
                          desc: 'Display usage information'
     method_option :number, type: :numeric, aliases: %w[-n],
                            desc: 'Number of words to be trained'
-    def train(file)
+    def train(file = nil)
       if options[:help]
         invoke :help, ['train']
       else

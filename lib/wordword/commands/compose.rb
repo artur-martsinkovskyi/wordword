@@ -12,7 +12,7 @@ module Wordword
       def execute(input: $stdin, output: $stdout)
         words = {}
         loop do
-          word = prompt.ask("What is the word?(write \\q to exit)") do |w|
+          word = prompt.ask("What is the word/phrase?(write \\q to exit)") do |w|
             w.required true
           end
           break if word == "\\q"

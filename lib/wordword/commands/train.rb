@@ -15,7 +15,7 @@ module Wordword
       def execute(input: $stdin, output: $stdout)
         words = {}
         wrong_answers = []
-        File.readlines(@file).each do |line|
+        File.readlines(@file || input).each do |line|
           word, translated_word = line.split('#').map(&:strip)
           words[word] = translated_word
         end
@@ -51,7 +51,7 @@ module Wordword
         )
       ensure
         if wrong_answers.any?
-          prompt.error('Here are the words you got wrong:')
+          prompt.error('Here are the words/phrases you got wrong:')
           wrong_answers.each do |word:, answer:, correct_answer:|
             prompt.say(
               "'#{word}' is '#{correct_answer}'. Your answer was '#{answer}.'"
@@ -59,7 +59,7 @@ module Wordword
           end
         else
           prompt.ok(
-            "You've got every word right. You're awesome, [FRIENDLY PRONOUN OF CHOICE]."
+            "You've got every word/phrase right. You're awesome, [FRIENDLY PRONOUN OF CHOICE]."
           )
         end
       end
