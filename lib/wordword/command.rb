@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-require 'forwardable'
+require "forwardable"
 
 module Wordword
   class Command
+
     extend Forwardable
 
     def_delegators :command, :run
@@ -14,7 +15,7 @@ module Wordword
     def execute(*)
       raise(
         NotImplementedError,
-        "#{self.class}##{__method__} must be implemented"
+        "#{self.class}##{__method__} must be implemented",
       )
     end
 
@@ -24,7 +25,7 @@ module Wordword
     #
     # @api public
     def command(**options)
-      require 'tty-command'
+      require "tty-command"
       TTY::Command.new(options)
     end
 
@@ -34,7 +35,7 @@ module Wordword
     #
     # @api public
     def cursor
-      require 'tty-cursor'
+      require "tty-cursor"
       TTY::Cursor
     end
 
@@ -44,7 +45,7 @@ module Wordword
     #
     # @api public
     def editor
-      require 'tty-editor'
+      require "tty-editor"
       TTY::Editor
     end
 
@@ -54,7 +55,7 @@ module Wordword
     #
     # @api public
     def generator
-      require 'tty-file'
+      require "tty-file"
       TTY::File
     end
 
@@ -64,7 +65,7 @@ module Wordword
     #
     # @api public
     def pager(**options)
-      require 'tty-pager'
+      require "tty-pager"
       TTY::Pager.new(options)
     end
 
@@ -74,7 +75,7 @@ module Wordword
     #
     # @api public
     def platform
-      require 'tty-platform'
+      require "tty-platform"
       TTY::Platform.new
     end
 
@@ -84,7 +85,7 @@ module Wordword
     #
     # @api public
     def prompt(**options)
-      require 'tty-prompt'
+      require "tty-prompt"
       TTY::Prompt.new(options)
     end
 
@@ -94,7 +95,7 @@ module Wordword
     #
     # @api public
     def screen
-      require 'tty-screen'
+      require "tty-screen"
       TTY::Screen
     end
 
@@ -104,7 +105,7 @@ module Wordword
     #
     # @api public
     def which(*args)
-      require 'tty-which'
+      require "tty-which"
       TTY::Which.which(*args)
     end
 
@@ -114,8 +115,9 @@ module Wordword
     #
     # @api public
     def exec_exist?(*args)
-      require 'tty-which'
+      require "tty-which"
       TTY::Which.exist?(*args)
     end
+
   end
 end

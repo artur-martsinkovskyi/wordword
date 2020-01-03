@@ -1,0 +1,10 @@
+en:
+  errors:
+    file_is_not_readable: "File is not readable. Check if it exists and you have correct permissions."
+    file_is_not_parseable: "File can't be parsed. Check if it is a valid words file e.g. that it includes only lines separated by # with words on each sides of it."
+  train:
+    interrupted: "\nYou finished the training abruptly."
+    wrong_alert: "Wrong!"
+    wrong_answers_intro: "Here are the words/phrases you got wrong:"
+    wrong_answer_entry: "%{word} is %{correct_answer}. Your answer was %{answer}."
+    everything_correct: "You've got every word/phrase right. You're awesome, [FRIENDLY PRONOUN OF CHOICE]."

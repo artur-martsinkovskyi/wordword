@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-require 'dry/monads/all'
+require "dry/monads/all"
 
 class ReadWordTable
+
   include Dry::Monads[:result]
   include Dry::Monads::Do.for(:call)
 
@@ -24,12 +25,13 @@ class ReadWordTable
   def parse_lines(file)
     words = {}
     file.each do |line|
-      next if line.strip == ''
+      next if line.strip == ""
       return Failure(:file_is_not_parseable) unless line.match?(/.*#.*/)
 
-      word, translated_word = line.split('#').map(&:strip)
+      word, translated_word = line.split("#").map(&:strip)
       words[word] = translated_word
     end
     Success(words)
   end
+
 end

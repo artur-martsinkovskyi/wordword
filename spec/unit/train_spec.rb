@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'wordword/commands/train'
+require "wordword/commands/train"
 
 RSpec.describe Wordword::Commands::Train do
-  it 'executes `train` command successfully' do
+  it "executes `train` command successfully" do
     output = StringIO.new
     file = nil
     options = {}
@@ -11,6 +11,8 @@ RSpec.describe Wordword::Commands::Train do
 
     command.execute(output: output)
 
-    expect(output.string).to eq("OK\n")
+    expect(output.string).to eq(
+      "File is not readable. Check if it exists and you have correct permissions."
+    )
   end
 end
