@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "dry/monads"
+require "pastel"
 
 module Train
   class SingleChoice
@@ -21,7 +22,14 @@ module Train
       if answer == translated_word
         Success(answer)
       else
-        Failure(word: word, answer: answer, correct_answer: translated_word)
+        Failure(
+          I18n.t(
+            "train.wrong_answer_entry",
+            word: pastel.blue(word),
+            correct_answer: pastel.green(translated_word),
+            answer: pastel.red(answer),
+          ),
+        )
       end
     end
 
@@ -40,6 +48,10 @@ module Train
       end
 
       result.shuffle
+    end
+
+    def pastel
+      @pastel ||= Pastel.new
     end
 
   end

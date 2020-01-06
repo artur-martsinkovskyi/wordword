@@ -38,18 +38,13 @@ module Wordword
           ),
         )
       ensure
-        exit unless words && word_loop
+        return unless words && word_loop
 
         if word_loop.wrong_answers.any?
           prompt.error(I18n.t("train.wrong_answers_intro"))
-          word_loop.wrong_answers.each do |word:, answer:, correct_answer:|
+          word_loop.wrong_answers.each do |wrong_answer_message|
             prompt.say(
-              I18n.t(
-                "train.wrong_answer_entry",
-                word: pastel.blue(word),
-                correct_answer: pastel.green(correct_answer),
-                answer: pastel.red(answer),
-              ),
+              wrong_answer_message
             )
           end
         elsif words.any?
