@@ -11,15 +11,13 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Artur Martsinkovskyi"]
   spec.email         = ["deimoss42@gmail.com"]
 
-  spec.summary       = "This is a language-agnostic CLI application for learning new words."
-  spec.description   = "This is a language-agnostic CLI application for learning new words."
+  spec.summary       = "A language-agnostic CLI application for learning new words."
+  spec.description   = "A language-agnostic CLI application for learning new words. You are able to construct the word lists and then train on them using nothing but the cli. The word list format is intuitive, so you can create your word lists however you want."
   spec.homepage      = "https://github.com/artur-martsinkovskyi/wordword"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-
     spec.metadata["homepage_uri"] = spec.homepage
     spec.metadata["source_code_uri"] = "https://github.com/artur-martsinkovskyi/wordword"
     spec.metadata["changelog_uri"] = "https://github.com/artur-martsinkovskyi/wordword/CHANGELOG.md"
@@ -37,10 +35,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "dry-monads"
-  spec.add_dependency "i18n"
-  spec.add_dependency "pastel", "~> 0.7.2"
-  spec.add_dependency "thor", "~> 0.20.0"
+  spec.add_dependency "dry-monads", "~> 1.3"
+  spec.add_dependency "i18n", "~> 1.7"
+  spec.add_dependency "pastel", "~> 0.7"
+  spec.add_dependency "thor", "~> 0.20"
   spec.add_dependency "tty-box", "~> 0.4.1"
   spec.add_dependency "tty-color", "~> 0.5"
   spec.add_dependency "tty-command", "~> 0.9.0"
@@ -63,7 +61,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "tty-which", "~> 0.4"
 
   spec.add_development_dependency "bundler", "~> 1.17"
-  spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry", "~> 0.12"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
 end
