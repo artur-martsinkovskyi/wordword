@@ -19,7 +19,7 @@ module Wordword
         if read_result.success?
           words = read_result.success
         else
-          prompt.error(
+          output.puts(
             pastel.red(
               I18n.t("errors.#{read_result.failure}"),
             ),
@@ -38,19 +38,17 @@ module Wordword
           ),
         )
       ensure
-        return unless words && word_loop
-
-        if word_loop.wrong_answers.any?
-          prompt.error(I18n.t("train.wrong_answers_intro"))
-          word_loop.wrong_answers.each do |wrong_answer_message|
-            prompt.say(
-              wrong_answer_message
+        if words && word_loop
+          if word_loop.wrong_answers.any?
+            prompt.error(I18n.t("train.wrong_answers_intro"))
+            word_loop.wrong_answers.each do |wrong_answer_message|
+              prompt.say(wrong_answer_message)
+            end
+          elsif words.any?
+            prompt.ok(
+              I18n.t("train.everything_correct"),
             )
           end
-        elsif words.any?
-          prompt.ok(
-            I18n.t("train.everything_correct"),
-          )
         end
       end
 

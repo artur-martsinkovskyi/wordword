@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "wordword/commands/train"
+require "pry"
 
 RSpec.describe Wordword::Commands::Train do
   it "executes `train` command successfully" do
@@ -12,7 +13,7 @@ RSpec.describe Wordword::Commands::Train do
     command.execute(output: output)
 
     expect(output.string).to eq(
-      "File is not readable. Check if it exists and you have correct permissions."
+      Pastel.new.red("File is not readable. Check if it exists and you have correct permissions.") + "\n",
     )
   end
 end
